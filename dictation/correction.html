@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dictation" />
+    <meta name="keywords" content="듣고쓰기,영어,리스닝,쓰기,말하기,받아쓰기,dictation,english,listening,writing,listen,write,learn,speaking" />
+    <title>Dictation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2a8bfd6a2d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./dictation.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container-fluid p-0">
+        <!-- 제목을 보이게 하기 위해서 js 작업 필요 - src > audio에서 선택된 항목의 제목을 출력-->
+        <span class="audiotitle">
+          <a href="/Dictation master/src/audio/" title="#"></a>
+        </span>
+      </div>
+    </header>
+
+    <main>
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-10">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="text text-right">
+                <p class="p-0 m-0">
+                  my answer
+                </p>
+              </div>
+            </div><!-- 사용자 작성 답안 -->
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="text text-right">
+                <p class="p-0 m-0">
+                  audio script
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+              <a class="btn btn-primary" data-bs-toggle="collapse" href="/Dictation master/dictation/dictation.html" role="button" aria-expanded="false" aria-controls="collapseExample">
+                NEXT
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

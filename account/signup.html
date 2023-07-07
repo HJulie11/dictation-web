@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dictation" />
+  <meta name="keywords" content="듣고쓰기,영어,리스닝,쓰기,말하기,받아쓰기,dictation,english,listening,writing,listen,write,learn,speaking" />
+  <title>Dictation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      console.log("시작!")
+
+      $.ajax({
+        url:""
+      })
+    })
+  </script>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="header header--style one">
+    <div class="header__status color-gray has-border">
+      <div class="container">
+        <div class="row">
+          <div class="col-8 col-sm-6">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><i class="fas fa-book-reader fa-2x mx-3">Dictation</i></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="col-3 col-sm-6">
+            <ul class="header__status__items header__status__items--right">
+              <li class="header_status__social d-none d-xl-block d-lg-block">
+                <a href="/account/signup"><i class="fa fa-pencil-square-o"></i>Sign Up</a>
+              </li>
+              <li id="login_btn" class="header__status__login cursor-pointer" data-toggle="modal" data-target="#usermodal" onclick="loadFBSdk()">
+                <i class="fa fa-lock" aria-hidden="true"></i>Login
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class="fas fa-book-reader fa-2x mx-3"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/homepage">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/calendar">My Calendar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/audio/news">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/audio/myaudio">My Audio</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- should be in a rectangular box-->
+  <!-- 모든 테스크 완료 후 로그아웃, 다음 로그인 때 그날의 테스크로 업데이트 (모든 체크박스 uncheck; 성적란 blank)-->
+  <div class="container-fluid p-0">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        Dictation
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+      <label class="form-check-label" for="flexCheckChecked">
+        Correction
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+      <label class="form-check-label" for="flexCheckChecked">
+        Read out loud
+      </label>
+    </div>
+    <!-- score calculated presented after all the checkboxes checked (when user finish task and comeback to 'home' page)-->
+    <div class="container-fluid">Score</div> <!-- style.css에서 todolist 영역 구분(색깔)이 지정 되면 그 영역 내에서 'Score (계산된 점수)' 가운데 정렬-->
+  </div>
+
+  <footer class="footer">
+    <div class="footer__end footer__end--dark">
+      <div class="container">
+        <div class="footer__copyright u-padding-t-15">
+          <p class="u-font13">© 2023 Dictation master</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+</body>
+</html>
