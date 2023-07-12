@@ -8,17 +8,6 @@
   <meta name="keywords" content="듣고쓰기,영어,리스닝,쓰기,말하기,받아쓰기,dictation,english,listening,writing,listen,write,learn,speaking" />
   <title>Dictation</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  <script>
-    $(document).ready(function(){
-      console.log("시작!")
-
-      $.ajax({
-        url:""
-      })
-    })
-  </script>
-  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="header header--style one">
@@ -46,7 +35,6 @@
     </div>
   </header>
   <main>
-    <section class="section-left">
       <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
@@ -76,47 +64,46 @@
     
       <!-- should be in a rectangular box-->
       <!-- 모든 테스크 완료 후 로그아웃, 다음 로그인 때 그날의 테스크로 업데이트 (모든 체크박스 uncheck; 성적란 blank)-->
-      <div class="container-fluid p-0 col-lg-4">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Dictation
-          </label>
+      <section class="section-left">
+        <div class="container-fluid p-0 col-lg-4">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Dictation
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Correction
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Read out loud
+            </label>
+          </div>
+          <!-- score calculated presented after all the checkboxes checked (when user finish task and comeback to 'home' page)-->
+          <div class="container-fluid">Score</div> <!-- style.css에서 todolist 영역 구분(색깔)이 지정 되면 그 영역 내에서 'Score (계산된 점수)' 가운데 정렬-->
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-          <label class="form-check-label" for="flexCheckChecked">
-            Correction
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-          <label class="form-check-label" for="flexCheckChecked">
-            Read out loud
-          </label>
-        </div>
-        <!-- score calculated presented after all the checkboxes checked (when user finish task and comeback to 'home' page)-->
-        <div class="container-fluid">Score</div> <!-- style.css에서 todolist 영역 구분(색깔)이 지정 되면 그 영역 내에서 'Score (계산된 점수)' 가운데 정렬-->
-      </div>
     </section>
 
-    <section>
-      <div class="container-fluid p-0 col-lg-8">
-        <div class="pagination-news">
+    <section class="section-right">
+      <div class="container-fluid p-1 col-lg-8">
+        <div class="row content" id="news_list">
+          <div class="card my-4 mx-2">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Title</h5>
+              <a href="../dictation/dictation.html" class="btn btn-primary">Go</a>
+            </div>
+          </div>
           <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link">Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
+            <ul class="paginaiotion justify-content-center" id="paging">
             </ul>
           </nav>
-        </div>
+        </div> 
       </div>
     </section>
   </main>
@@ -131,6 +118,154 @@
     </div>
   </footer>
 
-  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded",()=>{
+      var xhr = new XMLHttpRequest();
+
+      xhr.open('GET', 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&status=&playlistId=PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS&key=AIzaSyCwyhWtU9cEmq1F3JQM79IZEeQ5qQGvkWA',true);
+
+      xhr.responseType = "json";
+
+      //xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+      xhr.send();
+
+      xhr.onload=function(){
+        if(xhr.readyState==4 && xhr.status==200){
+          console.log(json.stringify(xhr.response));
+          let news_list = xhr.response.items;
+          //let news_list = {"kind":"youtube#playlistItemListResponse","etag":"hZp6dS392RY4LIIzzSRv4sT8X-o","nextPageToken":"EAAaBlBUOkNCaw","items":[{"kind":"youtube#playlistItem","etag":"qXB13iuc5PPxUgePkxCL5j5PWBo","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy40MDlGRDkxQUNENzdERUM2","snippet":{"publishedAt":"2023-07-07T13:07:11Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"See the Belarus military camp that was intended for Wagner fighters","description":"The Belarusian government showed the foreign media a military camp about an hour outside Minsk that they say could be used to house Wagner fighters, should they come to the country. The plan to host Wagner in Belarus is on hold, President Alexander Lukashenko told CNN during a press conference. CNN’s Matthew Chance reports. #CNN #News #wagner #prigozhin #belarus","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/yuvUc-1BCRw/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/yuvUc-1BCRw/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/yuvUc-1BCRw/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/yuvUc-1BCRw/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/yuvUc-1BCRw/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":0,"resourceId":{"kind":"youtube#video","videoId":"yuvUc-1BCRw"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"I2_2_xhtHoGzNouPOlFsfqErT8g","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy40RkY4RERGNkNERjEyRkU0","snippet":{"publishedAt":"2023-07-07T00:38:40Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"See what Russian authorities found in Wagner chief Prigozhin's office","description":"Authorities raided the office and residence of Wagner chief Yevgeny Prigozhin in St. Petersburg, state media reported, seizing cash, weapons and wigs. CNN's Melissa Bell has more. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/72WHRc-GMD8/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/72WHRc-GMD8/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/72WHRc-GMD8/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/72WHRc-GMD8/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/72WHRc-GMD8/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":1,"resourceId":{"kind":"youtube#video","videoId":"72WHRc-GMD8"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"yzxBB8NQbl4Q7MDOtZGVl9k0QoE","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy5GM0FDRDRFM0FERTlGMjZF","snippet":{"publishedAt":"2023-07-06T22:34:08Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"New twist in whereabouts of Wagner boss Prigozhin. Here’s what we know","description":"Wagner chief Yevgeny Prigozhin, who led a short-lived rebellion against Russian President Vladimir Putin, has not been seen in public since June 24. CNN's Matthew Chance reports on what we know about Prigozhin's whereabouts.\n\n #CNN #MatthewChance #yevgenyprigozhin","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/lbK9RhIaKGA/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/lbK9RhIaKGA/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/lbK9RhIaKGA/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/lbK9RhIaKGA/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/lbK9RhIaKGA/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":2,"resourceId":{"kind":"youtube#video","videoId":"lbK9RhIaKGA"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"9_fl6L8xx6o5DHTRpWF32d6HqRA","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy4yRTE3RUU5MzNBRjMxOTc3","snippet":{"publishedAt":"2023-07-06T19:36:49Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Retired Maj. Gen. reacts to Russia allegedly using jets to harass US drones in Syria and can do","description":"Defense officials tell CNN the United States expects to announce a new military aid package for Ukraine that will include cluster munitions for the first time. CNN military analyst Maj. Gen. James \"Spider\" Marks (Ret.) explains what they are. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/LrsxipYjVJ0/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/LrsxipYjVJ0/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/LrsxipYjVJ0/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/LrsxipYjVJ0/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/LrsxipYjVJ0/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":3,"resourceId":{"kind":"youtube#video","videoId":"LrsxipYjVJ0"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"BkGGuPFAp9xc_36Gua5slCpqEds","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy43NDg1NkVGQ0M0NTRFRjNG","snippet":{"publishedAt":"2023-07-06T16:15:32Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Lil Jon explains inspiration behind his work with 'Pencils of Promise'","description":"Rapper and producer Lil Jon sits down with CNN's Sara Sidner to discuss his fundraising and involvement with \"Pencils of Promise,\" an organization that builds schools in Ghana, Laos and Guatemala.#CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/YD2TU61KwAU/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/YD2TU61KwAU/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/YD2TU61KwAU/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/YD2TU61KwAU/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/YD2TU61KwAU/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":4,"resourceId":{"kind":"youtube#video","videoId":"YD2TU61KwAU"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"deCJa0a6NzADPW0qIKPkKxfYqdw","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy40MjAwREUwRTQ0REM0NjI3","snippet":{"publishedAt":"2023-07-06T13:56:07Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"See aftermath of airstrike on Lviv building","description":"At least four people were killed in a Russian attack on an apartment building in Lviv, according to the Minister of Internal Affairs of Ukraine. Ukrainian President Volodymyr Zelensky offered his condolences to the families and vowed to respond to the attack.  #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/aVnQk991Y6w/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/aVnQk991Y6w/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/aVnQk991Y6w/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/aVnQk991Y6w/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/aVnQk991Y6w/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":5,"resourceId":{"kind":"youtube#video","videoId":"aVnQk991Y6w"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"94BzaXEFzrW_x9vqdD7et1uc-IM","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy40RkM4OTU5Njc5ODA1QjhG","snippet":{"publishedAt":"2023-07-06T12:27:29Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"CNN asks Belarusian leader where Wagner chief is","description":"In a press conference, Belarusian President Alexander Lukashenko told CNN that Wagner chief Yevgeny Prigozhin is in Russia. Prigozhin was alleged to be exiled in Belarus after abandoning his short-lived uprising last month, in a deal purportedly brokered by Lukashenko. CNN's Matthew Chance reports.  #cnn  #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/lG-G0zHiOiY/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/lG-G0zHiOiY/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/lG-G0zHiOiY/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/lG-G0zHiOiY/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/lG-G0zHiOiY/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":6,"resourceId":{"kind":"youtube#video","videoId":"lG-G0zHiOiY"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"Oe-E_thv-wOOg5uc5UD44tD2JaU","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy5EMTNCMjYyNUVBODIyN0Ey","snippet":{"publishedAt":"2023-07-06T04:16:47Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"See tense moment when Russian soldiers surrendered","description":"CNN's Ben Wedeman interviews Russian prisoners of war, who share their experiences in brutal trench warfare. \n  #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/vnpCabm_c9c/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/vnpCabm_c9c/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/vnpCabm_c9c/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/vnpCabm_c9c/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/vnpCabm_c9c/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":7,"resourceId":{"kind":"youtube#video","videoId":"vnpCabm_c9c"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"5elLks8uMY-yyPK67bHBYQA-HR4","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy40RkQ4OEI2ODI4QUUxMDBE","snippet":{"publishedAt":"2023-07-06T00:08:39Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Zelensky gets asked if there's forgiveness for Ukrainians who collaborate with Russia","description":"In an exclusive interview with CNN's Erin Burnett, Ukrainian President Volodymyr Zelensky explains his views on Ukrainians who potentially collaborated with Russians during the ongoing war.\n  #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/nX-GgdSdE58/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/nX-GgdSdE58/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/nX-GgdSdE58/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/nX-GgdSdE58/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/nX-GgdSdE58/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":8,"resourceId":{"kind":"youtube#video","videoId":"nX-GgdSdE58"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"1Ygz_n_9CFEBf0HXbqb9DyGgtO8","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy43M0IyOUFEQkI2QTBERjM0","snippet":{"publishedAt":"2023-07-05T19:54:13Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Taliban to shut down beauty salons in Afghanistan","description":"CNN's Isa Soares speaks with former deputy speaker of the Afghan Parliament Fawzia Koofi about the Taliban government's move to close beauty salons for women. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/CbKKQNw_oHA/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/CbKKQNw_oHA/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/CbKKQNw_oHA/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/CbKKQNw_oHA/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/CbKKQNw_oHA/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":9,"resourceId":{"kind":"youtube#video","videoId":"CbKKQNw_oHA"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"cZezv2-F5sfhYmmWDBaZhk3tVO8","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy5DOEUyOEVEQTBFMkZBOUQ3","snippet":{"publishedAt":"2023-07-05T18:31:45Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"US Navy: Iranian ship fired on tanker in Gulf of Oman","description":"The US Navy intervened to stop Iranian Navy ships attempting to seize two oil tankers in separate incidents in the Gulf of Oman, according to a US defense official. An Iranian ship opened fire at the tanker in the second seizure attempt, according to the official. CNN’s Oren Liebermann reports. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/GlA2XtdyrBw/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/GlA2XtdyrBw/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/GlA2XtdyrBw/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/GlA2XtdyrBw/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/GlA2XtdyrBw/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":10,"resourceId":{"kind":"youtube#video","videoId":"GlA2XtdyrBw"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"5ZgZKqi61dvVmjxb2zCgCs1-2hk","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy4xNDc5RTI5OTRFNUZDRjRB","snippet":{"publishedAt":"2023-07-04T22:55:05Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Retired general on the signs that Ukraine is gaining momentum","description":"CNN military analyst Lt. General Mark Hertling (Ret.) and former CNN Moscow bureau chief Jill Dougherty discuss Russian President Vladimir Putin's appearance at the Shanghai Cooperation Organization virtual summit, in what was the Russian leader’s first appearance on the world stage since he faced an armed rebellion late last month. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/oQWIXvpeyDE/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/oQWIXvpeyDE/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/oQWIXvpeyDE/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/oQWIXvpeyDE/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/oQWIXvpeyDE/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":11,"resourceId":{"kind":"youtube#video","videoId":"oQWIXvpeyDE"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"OdJw66Y-0RVIVE7RsExEpGSeEd4","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy4zMUNBM0ZBMkU1QzBGMjlB","snippet":{"publishedAt":"2023-07-04T14:32:27Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Putin thanks allies for support during Wagner mutiny","description":"Russian President Vladimir Putin thanked allies who expressed solidarity with Moscow after last month's short-lived rebellion led by the Wagner private military company. Speaking at the Shanghai Cooperation Organization (SCO) conference, Putin thanked the leaders attending the summit for \"coming out as a united front.\" #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/E1pL87MtUgk/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/E1pL87MtUgk/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/E1pL87MtUgk/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/E1pL87MtUgk/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/E1pL87MtUgk/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":12,"resourceId":{"kind":"youtube#video","videoId":"E1pL87MtUgk"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"OxWBoDO6qPL3m1e5JO8M4uNvJxY","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy5DQUE5NTE4ODREMzM3QUVG","snippet":{"publishedAt":"2023-07-04T13:44:58Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Civilian kills suspect in Tel Aviv car ramming and stabbing attack","description":"Several people were injured after the driver of a car rammed into pedestrians near a Tel Aviv shopping center and then got out of the vehicle to stab civilians, Israeli police said. A spokesperson described the car ramming as a \"terror attack\" and told CNN the driver was killed by an armed civilian. Hamas claimed responsibility for the attack and said it was in response to Israel’s ongoing military operation in Jenin. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/dp27Zff_KjY/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/dp27Zff_KjY/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/dp27Zff_KjY/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/dp27Zff_KjY/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/dp27Zff_KjY/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":13,"resourceId":{"kind":"youtube#video","videoId":"dp27Zff_KjY"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"hsttJ2RVCspfiBQR6XoKqGHwt5Y","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy5EQTQxRkU1RThBNkRFMzNB","snippet":{"publishedAt":"2023-07-04T11:13:24Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Russia says Ukraine attempted ‘terrorist attack’ near Moscow","description":"Russia's Defense Ministry said it intercepted five Ukrainian drones near Moscow in what it called a \"terrorist attack\". Ukraine rarely comments on attacks on Russian soil, which have ramped up in recent months as the war increasingly comes home to the Russian people. CNN’s Ben Wedeman reports. #CNN #News #Russia #ukraine #war","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/kb9Xt0lwePM/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/kb9Xt0lwePM/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/kb9Xt0lwePM/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/kb9Xt0lwePM/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/kb9Xt0lwePM/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":14,"resourceId":{"kind":"youtube#video","videoId":"kb9Xt0lwePM"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"mRE0BF-IF8SWT11UYOkK2_To9MA","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy41RDAyQTA2OEM1MUNFQkE5","snippet":{"publishedAt":"2023-07-03T20:12:41Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Dutch king apologizes for Netherlands' role in slavery","description":"Dutch King Willem-Alexander apologized for \"horrors of slavery\" and asked for forgiveness. CNN's Paula Newton discusses with Linda Nooitmeer from the National Institute for the Study of Dutch Slavery. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/aM8I5Z5MYdA/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/aM8I5Z5MYdA/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/aM8I5Z5MYdA/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/aM8I5Z5MYdA/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/aM8I5Z5MYdA/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":15,"resourceId":{"kind":"youtube#video","videoId":"aM8I5Z5MYdA"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"Q6TrRq90tHl3oOw57uYNl5wFeh4","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy4xNTM0NUJDOTM2MURDQkEx","snippet":{"publishedAt":"2023-07-03T18:47:40Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Israel launches biggest military operation in West Bank in 20 years","description":"Israeli forces launched what a military source said is its largest military operation in the occupied West Bank city of Jenin in more than 20 years, killing at least eight people and injuring about 80 others, according to Palestinian officials. CNN’s Hadas Gold reports. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/0CAKmE6KcJQ/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/0CAKmE6KcJQ/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/0CAKmE6KcJQ/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/0CAKmE6KcJQ/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/0CAKmE6KcJQ/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":16,"resourceId":{"kind":"youtube#video","videoId":"0CAKmE6KcJQ"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"zFPeoj06_AGhYurOEVkohw3PP4M","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy43MTg5MkUzMzQ2MTQ1NUI2","snippet":{"publishedAt":"2023-07-03T14:13:55Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Hear how McDonald's could help save the earth","description":"New research suggests that cows could play a part in finding a solution for reducing CO2 emissions which could aid the fight against climate change. CNN's Bill Weir has more. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/hjJXz0adpRg/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/hjJXz0adpRg/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/hjJXz0adpRg/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/hjJXz0adpRg/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/hjJXz0adpRg/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":17,"resourceId":{"kind":"youtube#video","videoId":"hjJXz0adpRg"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"Iqe0BCivEiPhas5Mg4p3iFRZLs0","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy5DQjMwNjVDRDBBNDMyMkIz","snippet":{"publishedAt":"2023-07-03T13:57:42Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"‘Game changer’: Ret. Army Major on giving Ukraine long-range missiles","description":"Ret. US Army Major Mike Lyons discusses a Wall Street Journal report that the US is considering approving a long-range missile system for use in Ukraine’s fight against Russia. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/-xnDVoVnvHo/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/-xnDVoVnvHo/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/-xnDVoVnvHo/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/-xnDVoVnvHo/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/-xnDVoVnvHo/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":18,"resourceId":{"kind":"youtube#video","videoId":"-xnDVoVnvHo"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"kr2eHB1WESiHHWtDWVprTICo48s","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy42NkQ4MTY2QjlDMzFBNDY4","snippet":{"publishedAt":"2023-07-03T11:38:01Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Zelensky calls Putin's reaction to Wagner rebellion 'weak'","description":"Ukrainian President Volodymyr Zelensky said the short-lived Wagner Group mutiny has exposed Putin's weakness in controlling the Russian military during an exclusive interview with CNN's Erin Burnett.  #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/DuG8O5b5m5U/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/DuG8O5b5m5U/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/DuG8O5b5m5U/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/DuG8O5b5m5U/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/DuG8O5b5m5U/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":19,"resourceId":{"kind":"youtube#video","videoId":"DuG8O5b5m5U"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"mt1isTnzRkVdwz8gwn7K_nHxlXQ","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy45OUVGRTI2NzA0MjlFMEU2","snippet":{"publishedAt":"2023-07-02T22:25:10Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Front line of US missile defense strained under the demand of global threats","description":"The US Army’s air defense units are among the most overworked in the US military, manning missile systems across the globe to provide around-the-clock deterrence against adversaries including North Korea, China, Iran and Russia.\nIn describing the problem to CNN, the Army’s most senior air defense officer, Lt. Gen. Dan Karbler, recounted something an Army sergeant told him recently: “Sir, it’s simple, pure math. We have more missions than we have air defense capability.”\nAs demands stack up with the war in Ukraine and amid looming concerns over a potential conflict with China, service leaders have been sounding the alarm that these critical missile defense units could be stretched too thin. #Haley Britzky #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/pA30y0Zvb5Q/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/pA30y0Zvb5Q/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/pA30y0Zvb5Q/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/pA30y0Zvb5Q/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/pA30y0Zvb5Q/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":20,"resourceId":{"kind":"youtube#video","videoId":"pA30y0Zvb5Q"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"0L9Nh0ymMwaDad4gf5nJTnK4QM4","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy40QzU0NzNEMDFBMTE3REMy","snippet":{"publishedAt":"2023-07-02T21:00:30Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Retired colonel explains what Russia’s latest attack indicates about its military","description":"Retired US Air Force Col. Cedric Leighton talks to CNN’s Boris Sanchez about what fresh attacks by Russia in Ukraine says about its military and why Ukrainian President Volodymyr Zelensky issued a warning about some Republican lawmakers in the US. #CedricLeighton #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/kRBNVGBc3WE/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/kRBNVGBc3WE/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/kRBNVGBc3WE/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/kRBNVGBc3WE/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/kRBNVGBc3WE/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":21,"resourceId":{"kind":"youtube#video","videoId":"kRBNVGBc3WE"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"N-iHs3reOgiw0-XiuzKJgC1D99w","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy43RTQzMTRGRjhFNThBNDA0","snippet":{"publishedAt":"2023-07-02T16:20:28Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"'Losing the 21st century': Fareed examines the state of Russian society","description":"CNN's Fareed Zakaria looks into the state of Russia's society, including its life expectancy, birth rates and knowledge economy. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/r5FlaRUcNec/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/r5FlaRUcNec/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/r5FlaRUcNec/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/r5FlaRUcNec/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/r5FlaRUcNec/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":22,"resourceId":{"kind":"youtube#video","videoId":"r5FlaRUcNec"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"65UJ1D7mZpdItQr6Iq16Ou5yMvI","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy5FMjlCMjVCMkM3NTIxMzAz","snippet":{"publishedAt":"2023-07-01T01:50:10Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"Ukraine says Russia’s FSB plotting to kill leader of insurrection against Putin","description":"The Ukrainian military intelligence chief says that Russia's security service, the FSB, has been given the mission to assassinate Wagner leader Yevgeny Prigozhin, who has not been seen in public since calling off the armed insurrection against Russian President Vladimir Putin.  #AC360 #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/y29D7tZCkbs/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/y29D7tZCkbs/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/y29D7tZCkbs/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/y29D7tZCkbs/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/y29D7tZCkbs/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":23,"resourceId":{"kind":"youtube#video","videoId":"y29D7tZCkbs"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}},{"kind":"youtube#playlistItem","etag":"BKJvZciTtMQsiI8ovp_Tc39pjms","id":"UEw2WFJybmNYa01hVzVwN211YVIyczJJcWpvdVFoNGpxUy4wNDAwNENGQkI5M0UzRTQ3","snippet":{"publishedAt":"2023-07-01T01:59:05Z","channelId":"UCupvZG-5ko_eiXAupbDfxWw","title":"CNN revisits woman in Ukraine who survived relentless shelling","description":"CNN’s Erin Burnett returns to Andriivka, a community that was the most destroyed village in the Kyiv region in 2022, and revisited a woman who survived relentless shelling. #CNN #News","thumbnails":{"default":{"url":"https://i.ytimg.com/vi/Cv7O8DAGsZs/default.jpg","width":120,"height":90},"medium":{"url":"https://i.ytimg.com/vi/Cv7O8DAGsZs/mqdefault.jpg","width":320,"height":180},"high":{"url":"https://i.ytimg.com/vi/Cv7O8DAGsZs/hqdefault.jpg","width":480,"height":360},"standard":{"url":"https://i.ytimg.com/vi/Cv7O8DAGsZs/sddefault.jpg","width":640,"height":480},"maxres":{"url":"https://i.ytimg.com/vi/Cv7O8DAGsZs/maxresdefault.jpg","width":1280,"height":720}},"channelTitle":"CNN","playlistId":"PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS","position":24,"resourceId":{"kind":"youtube#video","videoId":"Cv7O8DAGsZs"},"videoOwnerChannelTitle":"CNN","videoOwnerChannelId":"UCupvZG-5ko_eiXAupbDfxWw"}}],"pageInfo":{"totalResults":4728,"resultsPerPage":25}}
+          let card="";
+
+          for (let item of news_list.items) {
+            card = card + `<div class="card my-4 mx-2">
+                  <img src="${item.snippet.thumbnails}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">${item.snippet.title}</h5>
+                    <a href="../dictation/dictation.html" class="btn btn-primary">Go</a>
+                  </div>
+                </div>`;
+            //"https://img.youtube.com/vi/" + news_list[i].snippet.resourceId.videoId + "\#.jpg"
+          }
+          document.querySelector(".content").innerHTML = card
+        }else{
+          console.log(error);
+        }
+      }
+
+    })
+
+    //pagination
+    let news_list = json.response.items;
+    news_list=news_list.reverse();
+
+    const totalCount = news_list.length;
+    const totalPage = Math.ceil(totalCount / 10.0);
+    document.addEventListener("DOMContentLoaded", ()=>{
+      setPageHtml();
+      setList();
+    })
+    
+    function setPageHtml(){
+      let pageHtml = `<li class="page-item">
+              <a href="#;" class="page-link" onClick="changePage('first');return false;">First</a>
+          </li>
+          <li class="page-item">
+              <a href="#" class="page-link" onClick="changePage('prev');return false;">Prev</a>
+          </li>
+          <li class="page-item active">
+              <a href="#;" class="page-link" onClick="changePage(1);return false;">1</a>
+          </li>`;
+
+      for(let i = 2; i<=totalPage;i++){
+        pageHtml+= `<li class="page-item">
+              <a href="#;" class="page-link" onClick="changePage(${i});return false;">${i}</a>
+            </li>`;
+      }
+
+      pageHtml += `<li class="page-item">
+            <a href="#;" class="page-link" onClick="changePage('next');return false;">Next</a>
+        </li>
+        <li class="page-item">
+            <a href="#;" class="page-link" onClick="changePage('last');return false;">Last</a>
+        </li>`;
+
+      document.getElementById("paging").innerHTML = pageHtml;
+    }
+
+    function setList(page){
+      let pageCount = 10;
+      //(condition) ? (value when true) : (value when false);
+      page = page == null ? 1 : page;
+
+      let startPage = (page - 1)*pageCount + 1;
+      let endPage = startPage + pageCount - 1;
+      endPage = endPage > totalCount ? totalCount : endPage;
+
+      showList(startPage, endPage);
+
+      let html = `${page}/${totalPage} pages [총 <strong>${totalCount}</strong>videos]`;
+      document.getElementById("page_info").innerHTML = html;
+      document.querySelectorAll("#paging li").forEach((item)=>{
+        let str=item.querySelector("#paging li a").innerText;
+        if(str.includes(page)) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+    }
+    /**
+     * page data setting
+     * @param startpage
+     * @param endpage
+     */
+
+    function showList(startPage, endPage){
+      let html="";
+      for (let i=(startPage - 1); i<endPage; i++) {
+        let title=news_list[i].snippet.title;
+        let thumbnail = news_list[i].snippet.thumbnails.default;
+
+        html += `<div class="card my-4 mx-2">
+                  <img src="${thumbnail}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">${title}</h5>
+                    <a href="../dictation/dictation.html" class="btn btn-primary">Go</a>
+                  </div>
+                </div>`;
+      }
+      document.getElementById("news_list").innerHTML = html;
+    }
+
+    /**
+     * page click event
+     * @param page
+     * @returns
+     */ 
+
+    function changePage(page){
+      log("page ==> " + page);
+
+      //current page
+      let currentPage = parseInt(document.querySelector("paging .active a").innerText);
+      log("currentPage -->" + currentPage);
+
+      if(page === "first"){
+        page="1";
+      } else if(page === "prev"){
+        page = (currentPage - 1) < 1 ? currentPage:(currentPage - 1);
+      } else if(page === "next"){
+        page = (currentPage + 1) > totalPage ? totalPage : (currentPage + 1);
+      } else if(page === "last"){
+        page=totalPage;
+      }
+
+      if(currentPage != page){
+        setList(page);
+      }
+    }
+  </script>
 </body>
 </html>
