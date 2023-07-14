@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <section class="col-lg-12 content-wrapper">
+    <div>
+      <div class="m-post-content m-post-content--tok">
+        <div class="post-top">
+          <div class="breadcrumbs u-margin-b-5">
+            <span>
+              <a href="/">Home</a>
+            </span>
+            <span class="separetor">-</span>
+            <span class="current">Title</span>
+          </div>
+          <h2 class="post-title">
+            <table><tr><td>
+              <div style="width:100px;height:100px; border: 6px solid #DDDDDD; background:RGB(120,188,100);vertical-align:middle;">
+                <center style="padding:5px;"></center>
+              </div>
+            </td><td>
+              Title
+            </td></tr></table>
+          </h2>
+        </div>
+        <div class="entry-content">
+          <div id="player2" style="border:2px solid #dddddd; padding-bottom:10px;">
+            <div id="sentence_list">
+              <script type="text/javascript">
+                ass = 2;
+                listOfSentences = new Array(ass);
+                listOfSentences[0] = {'id':378706, 'begin':5279, 'end':6720, 'audioscript':"Hey this is anthony davis with"};
+                listOfSentences[1] = {'id':378707, 'begin':6720, 'end':8480, 'audioscript':"Shapeshift wellness and in this video"};
+              </script>
+
+              <div style="text-align:left;">
+                <center>
+                  Track:
+                  <select id="sentences_no" onChange="if ($('#sentences_no').val()=='')return;sentenceInfo($('#sentences_no').val());$('#audioScript').focus();resetTrack();playStart();" class="select-style">
+                    <option value="0">1...</option>
+                    <option value="1">2...</option>
+                  </select>
+                  /2
+                </center>
+              </div>
+              <div>
+                <center>
+                  <table border="0">
+                    <tr><td>
+                      <center>
+                        <div class="youtubePlayer">
+                          <div id="videoDiv">Loading</div>
+                        </div>
+                      </center>
+                    </td></tr>
+                    <tr><td>
+                      <br/>
+                      <div stlye="width:100%;" align="center">
+                        <canvas id="canvas" height="100"></canvas>
+                      </div>
+                      <table border="0" width="95%" style="padding:0px;">
+                        <tr>
+                          <td width="30%"><center><div id="playback_rate" style="font-size:1.5em;padding: 0px 10px 0px 10px;"> 1x </div>SPEED</center></td>
+                          <td width="40%"><span id="score" style="font-size:4.5em;"></span><div id="score_result"></div></td>
+                          <td width="30%" valign="top"><span id="score_gap" style="font-size:3.0em;color:red;margin-top:5px"></span><div id="score_hint" class="memberscore"  style="background:#CCC;color:#555;margin-top:5px"></div></td>
+                        </tr>
+                      </table>
+                      <div id="player" style="overflow: hidden; position: relative; height:320px;">
+                        <div id="scriptok"></div>
+                        <div id="controlplay" class="controlDiv stop" onclick="playStart()"></div>
+                        <div id="translated" align="left" style="width:90%; padding:5px;"></div>
+                        <div align="left">
+                          <i class="button medium icon"><i class="check"></i>
+                          <button type="button" onclick="if (ytplayer) {stopVideo(); $('#controlPlay').addClass('controlDiv play');} return false;">Stop</button>
+                          &nbsp;
+                          <button id="hint" type="button" onclick="accessHint(24030)">Hint</button></i> &nbsp;
+                          <span id="hintword" style="font-size:16px;font-weight:bold;color:blue;"></span>
+                          <i class='button medium icon' style="float:right"><i class='check'></i>
+                          <button type="button" onclick="loadTranslate()">Google Translation</button></i>
+                        </div>
+                        <textarea cols="38" rows="1" id="audioScript" onkeyup="check(24030,0)"></textarea>
+                        <div id="logger"></div>
+                      </div>
+                    </td></tr>
+                  </table>
+                </center>
+              </div>
+            </div>
+          </div><!--player2-->
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
