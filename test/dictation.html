@@ -1,13 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="description" content="Dictation" />
+  <meta name="keywords" content="듣고쓰기,영어,리스닝,쓰기,말하기,받아쓰기,dictation,english,listening,writing,listen,write,learn,speaking" />
+  <title>Dictation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
 </head>
 <body>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <header class="header header--style one">
+    <div class="header__status color-gray has-border">
+      <div class="container">
+        <div class="row">
+          <div class="col-8 col-sm-6">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><i class="fas fa-book-reader fa-2x mx-3">Dictation</i></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="col-3 col-sm-6">
+            <ul class="header__status__items header__status__items--right">
+              <li class="header_status__social d-none d-xl-block d-lg-block">
+                <a href="../index.html">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
   <section class="col-lg-12 content-wrapper">
     <div>
       <div class="m-post-content m-post-content--tok">
@@ -55,6 +83,7 @@
                     <tr><td>
                       <center>
                         <div class="youtubePlayer">
+                          <!-- <iframe> and video player will replace this <div> tag. -->
                           <div id="videoDiv">Loading</div>
                         </div>
                       </center>
@@ -97,5 +126,46 @@
       </div>
     </div>
   </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script>
+    //asynchronously load IFrame Player API code
+    var tag = document.createElement('script');
+
+    tag.src="https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag,firstScriptTag);
+
+    //function that creates an <iframe> (and YouTube player) after API code downloads.
+    var videoDiv;
+    function onYoutubeIframeAPIReady(){
+      player=new YT.Player('videoDiv', {
+        height: '360',
+        width: '640',
+        videoId: '',
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    //The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+
+    //The API calls this function when the player's state changes. The function indicates that when playing a video (state=1), the player should play for six seconds and then stop.
+    var done = false;
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+      }
+    }
+    function stopVideo(){
+      videoDiv.stopVideo();
+    }
+  </script>
+  <!--<script src="https://kit.fontawesome.com/2a8bfd6a2d.js" crossorigin="anonymous"></script>-->
 </body>
 </html>
