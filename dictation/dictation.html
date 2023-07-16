@@ -1,43 +1,137 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dictation" />
-  <meta name="keywords" content="듣고쓰기,영어,리스닝,쓰기,말하기,받아쓰기,dictation,english,listening,writing,listen,write,learn,speaking" />
-  <title>Dictation</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/2a8bfd6a2d.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./dictation.css" />
-</head>
-<body>
-  <div class="container" id="whole">
-    <!-- audio title -->
-    <div class="container-fluid" id="audio-title"><h1>Audio Title</h1></div>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dictation" />
+    <meta name="keywords" content="듣고쓰기,영어,리스닝,쓰기,말하기,받아쓰기,dictation,english,listening,writing,listen,write,learn,speaking" />
+    <title>Dictation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!--<script src="https://kit.fontawesome.com/2a8bfd6a2d.js" crossorigin="anonymous"></script>-->
+    <!--<link rel="stylesheet" href="./dictation.css" />-->
+  </head>
+  <body>
+    <header></header>
+    <section class="col-lg-12 content-wrapper">
+      <center>
+        <div class="table-responseive-lg">
+          <table border="0" width="95%" style="width:936px; height: 638px; margin-top: 41px;">
+            <thead>
+              <tr><th style="font-size: 40px; font-weight: 700; height:84px;">Audio Title</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="type_here">
+                    <textarea id="freeform" name="freeform" style="width:616px; height: 638px;">Type here...</textarea>
+                  </div>
+                </td>
+                <td class="youtubePlayer" style="width: 320px; height:638px;">
+                  <center>
+                    <!-- <iframe> and video player will replace this <div> tag. -->
+                    <div id="videoDiv" style="vertical-align: text-top;"></div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div id="next-button" style="vertical-align: bottom;"><a type="button" class="btn btn-primary"  href="./correction.html">Next</a></div>
+                    <style>
+                      .btn {
+                        background-color:rgba(99, 96, 246, 1); 
+                        width: 118px; 
+                        height: 51px; 
+                        border-radius: 20px;
+                        font-size: 28px;
+                        font-weight: 700;
+                        color: #fff;
+                      }
+                      .btn:hover{
+                        background-color: rgb(76, 74, 184);
+                      }
 
-    <div class="container">
-      <textarea id="freeform" name="freeform">
-        Type here...
-      </textarea>
+                      br {
+                        padding: 100%;
+                      }
+                    </style>
+                    
+                  </center>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </center>
+    </section>
+
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('videoDiv', {
+          height: '180',
+          width: '320',
+          videoId: '8T7eE3y_-2s',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>
+    <!-- <div class="container" id="whole"> -->
+      <!-- audio title -->
+      <!-- <div class="container-fluid" id="audio-title"><h1>Audio Title</h1></div> -->
+
+      <!-- <div class="type_here">
+        <textarea id="freeform" name="freeform">
+          Type here...
+        </textarea>
+      </div> -->
+
+
+      <!-- audio player -->
+      <!-- <div class="container" id="audio-player-container">
+        <div calss="container" id="audio-cover"></div>
+        <audio src="/Dictation master/src/audio/" preload="metadata" loop></audio> -->
+        <!-- swaps with pause icon -->
+        <!-- <button id="play-icon"><i class="fa-solid fa-play fa-2x"></i></button>
+        <span id="current-time" class="time">0:00</span>
+        <input type="range" id="seek-slider" max="100" value="0">
+        <span id="duration" class="time">0:00</span>
+        <output id="volume-output">100</output>
+        <input type="range" id="volume-slider" max="100" value="100">
+        <button id="mute-icon"><i class="fa-solid fa-volume-xmark fa-2x"></i></button>
+      </div>
+
+      <audio-player data-src="/Dictation master/src/audio"></audio-player>   -->
     </div>
-
-
-    <!-- audio player -->
-    <div class="container" id="audio-player-container">
-      <div calss="container" id="audio-cover"></div>
-      <audio src="/Dictation master/src/audio/" preload="metadata" loop></audio>
-      <!-- swaps with pause icon -->
-      <button id="play-icon"><i class="fa-solid fa-play fa-2x"></i></button>
-      <span id="current-time" class="time">0:00</span>
-      <input type="range" id="seek-slider" max="100" value="0">
-      <span id="duration" class="time">0:00</span>
-      <output id="volume-output">100</output>
-      <input type="range" id="volume-slider" max="100" value="100">
-      <button id="mute-icon"><i class="fa-solid fa-volume-xmark fa-2x"></i></button>
-    </div>
-
-    <audio-player data-src="/Dictation master/src/audio"></audio-player>  
-  </div>
-</body>
+  </body>
+</html>
