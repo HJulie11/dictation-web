@@ -17,21 +17,21 @@
     <section class="col-lg-12 content-wrapper">
       <center>
         <div class="table-responseive-lg">
-          <table border="0" width="95%" style="width:936px; height: 638px; margin-top: 41px;">
+          <table class="table table-striped" border="0" width="95%" style="width:936px; height: 638px; margin-top: 41px;">
             <thead>
               <tr><th style="font-size: 40px; font-weight: 700; height:84px;">Audio Title</th></tr>
             </thead>
             <tbody>
-              <tr>
+              <!-- <tr>
                 <td>
                   <div class="type_here">
                     <textarea id="freeform" name="freeform" style="width:616px; height: 638px;">Type here...</textarea>
                   </div>
-                </td>
-                <td class="youtubePlayer" style="width: 320px; height:638px;">
-                  <center>
+                </td> -->
+                <!-- <td class="youtubePlayer" style="width: 320px; height:638px;">
+                  <center> -->
                     <!-- <iframe> and video player will replace this <div> tag. -->
-                    <div id="videoDiv" style="vertical-align: text-top;"></div>
+                    <!-- <div id="videoDiv" style="vertical-align: text-top;"></div>
                     <br/>
                     <br/>
                     <br/>
@@ -56,6 +56,37 @@
                     </style>
                     
                   </center>
+                </td> -->
+              <!-- </tr> -->
+              <tr>
+                <td class="youtubePlayer" style="padding: 3px;">
+                  <!-- <iframe> and video player will replace this <div> tag. -->
+                  <div id="videoDiv" style="vertical-align: bottom; float:left;"></div>
+                  <div id="next-button" style="padding: block 10px; vertical-align: bottom;">
+                    <a type="button" class="btn btn-primary"  href="./correction.html">Next</a>
+                  </div>
+                  <style>
+                    .btn{
+                      background-color:rgba(99, 96, 246, 1); 
+                      width: 118px; 
+                      height: 51px; 
+                      border-radius: 20px;
+                      font-size: 28px;
+                      font-weight: 700;
+                      color: #fff;
+                      vertical-align: bottom;
+                    }
+                    .btn:hover{
+                      background-color: rgb(76, 74, 184);
+                    }
+                  </style>
+                </td>  
+              </tr>
+              <tr>
+                <td>
+                  <div class="type_here">
+                    <textarea id="freeform" name="freeform" style="width: 936px; height: 420px;">Type here...</textarea>
+                  </div>
                 </td>
               </tr>
             </tbody>
