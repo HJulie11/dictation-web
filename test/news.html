@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dictation" />
+  <meta name="keywords" content="듣고쓰기,영어,리스닝,쓰기,말하기,받아쓰기,dictation,english,listening,writing,listen,write,learn,speaking" />
+  <title>Dictation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+  <header class="header header--style one">
+    <div class="header__status color-gray has-border">
+      <div class="container">
+        <div class="row">
+          <div class="col-8 col-sm-6">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><i class="fas fa-book-reader fa-2x mx-3">Dictation</i></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="col-3 col-sm-6">
+            <ul class="header__status__items header__status__items--right">
+              <li class="header_status__social d-none d-xl-block d-lg-block">
+                <a href="../index.html">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+      <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-book-reader fa-2x mx-3"></i></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-page" aria-current="page" href="../homepage.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" id="calendar" aria-current="page" href="../calendar.html">My Calendar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" id="news" aria-current="page" href="./news.html">News</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" id="my-audio" aria-current="page" href="./myaudio.html">My Audio</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    
+      <!-- should be in a rectangular box-->
+      <!-- 모든 테스크 완료 후 로그아웃, 다음 로그인 때 그날의 테스크로 업데이트 (모든 체크박스 uncheck; 성적란 blank)-->
+      <section class="section-left">
+        <div class="container-fluid p-0 col-lg-4">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Dictation
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Correction
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Read out loud
+            </label>
+          </div>
+          <!-- score calculated presented after all the checkboxes checked (when user finish task and comeback to 'home' page)-->
+          <div class="container-fluid">Score</div> <!-- style.css에서 todolist 영역 구분(색깔)이 지정 되면 그 영역 내에서 'Score (계산된 점수)' 가운데 정렬-->
+        </div>
+    </section>
+
+    <section class="ftco-section" style="height:1000px">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center mb-5">
+            <h2 class="heading-section">News</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div id="page_info"></div>
+            <div class="table-wrap">
+              <div class="card my-4 mx-2" id="news_list">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Title</h5>
+                  <!-- <a href="../dictation/dictation.html" class="btn btn-primary">Go</a> -->
+                  <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#dictation" role="button" aria-controls="offcanvasExample" onclick="startDictation()">
+                    Go
+                  </a>
+                  <div class="offcanvas offcanvas-start" tabindex="-1" id="dictation" aria-labelledby="offcanvasExampleLabel">
+                    <!-- <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasExampleLabel">${title}</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      <table border="0" width="95%" style="width:936px; height: 638px; margin-top: 41px;">
+                        <thead>
+                          <tr><th style="font-size: 40px; font-weight: 700; height:84px;">${title}</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="type_here">
+                                <textarea id="freeform" name="freeform" style="width:616px; height: 638px; padding:3px;">Type here...</textarea>
+                              </div>
+                            </td>
+                            <td class="youtubePlayer" style="width: 320px; height:638px;">
+                              <center> -->
+                                <!-- <iframe> and video player will replace this <div> tag. -->
+                                <!-- <div id="videoDiv" style="vertical-align: text-top;"></div>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <div id="next-button" style="vertical-align: bottom;"><a type="button" class="btn btn-primary"  href="./correction.html">Next</a></div>
+                              </center>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <style>
+                .btn {
+                  background-color:rgba(99, 96, 246, 1); 
+                  width: 118px; 
+                  height: 51px; 
+                  border-radius: 20px;
+                  font-size: 28px;
+                  font-weight: 700;
+                  color: #fff;
+                }
+                .btn:hover{
+                  background-color: rgb(76, 74, 184);
+                }
+
+                br {
+                  padding: 100%;
+                }
+              </style>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center" id="paging">
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer class="footer">
+    <div class="footer__end footer__end--dark">
+      <div class="container">
+        <div class="footer__copyright u-padding-t-15">
+          <p class="u-font13">© 2023 Dictation master</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <!--<script src="https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&status=&playlistId=PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS&key=AIzaSyCwyhWtU9cEmq1F3JQM79IZEeQ5qQGvkWA"></script>-->
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded",()=>{
+
+      var xhr = new XMLHttpRequest();
+
+      xhr.open('GET', 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=25&status=&playlistId=PL6XRrncXkMaW5p7muaR2s2IqjouQh4jqS&key=AIzaSyCwyhWtU9cEmq1F3JQM79IZEeQ5qQGvkWA', true);
+
+
+      xhr.responseType = "json";
+      
+      xhr.send();
+
+      xhr.onload=function(){
+        let news_list = xhr.response.items;
+        news_list = news_list.reverse();
+        const totalCount = xhr.response.pageInfo.totalResults;
+        const resultsPerPage = xhr.response.pageInfo.resultsPerPage;
+        const totalPage = Math.ceil(totalCount/resultsPerPage);
+        if(xhr.readyState == 4 && xhr.status == 200){
+          console.log(xhr.response);
+          setPageHtml();
+          setList();
+        } else {
+          
+        }
+
+        function setPageHtml(){
+          let pageHtml = `<li class="page-item">
+                  <a href="#;" class="page-link" onClick="changePage('first');return false;">First</a>
+              </li>
+              <li class="page-item">
+                  <a href="#" class="page-link" onClick="changePage('prev');return false;">Prev</a>
+              </li>
+              <li class="page-item active">
+                  <a href="#;" class="page-link" onClick="changePage('1');return false;">1</a>
+              </li>`;
+          
+          for(let i=2; i <= totalPage; i++){
+            pageHtml += `<li class="page-item">
+                  <a href="#;" class="page-link" onClick="changePage('${i}');return false;">${i}</a>
+                </li>`;
+          }
+
+          pageHtml += `<li class="page-item">
+                <a href="#;" class="page-link" onClick="changePage('next');return false;">Next</a>
+            </li>
+            <li class="page-item">
+                <a href="#;" class="page-link" onClick="changePage('last');return false;">Last</a>
+            </li>`;
+          
+          document.getElementById("paging").innerHTML = pageHtml;
+
+        }
+
+        function setList(page){
+          let pageCount = 10;
+          page = page == null ? 1 : page;
+
+          let startPage = (page - 1)*pageCount + 1;
+          let endPage = startPage + pageCount - 1;
+          endPage = endPage > totalCount ? totalCount : endPage;
+
+          showList(startPage, endPage);
+
+          let html = `${page}/${totalPage} 쪽 [총 <strong>${totalCount}</strong>건]`;
+
+          document.getElementById("page_info").innerHTML = html;
+          document.querySelectorAll("#paging li").forEach((item) => {
+            let str = item.querySelector("#paging li a").innerText;
+            if(str.includes(page)) {
+              item.classList.add("active");
+            } else {
+              item.classList.remove("active");
+            }
+          });
+        }
+
+        function showList(startPage, endPage){
+          let html = "";
+          for (let i = (startPage - 1); i<endPage; i++) {
+            let title = news_list[i].snippet.title;
+            let thumbnail = news_list[i].snippet.thumbnails.default;
+
+            html += `<img src="${thumbnail}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">${title}</h5>
+                        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#dictation" role="button" aria-controls="offcanvasExample">
+                          Go
+                        </a>
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="dictation" aria-labelledby="offcanvasExampleLabel">
+                          <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasExampleLabel">${title}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                          </div>
+                          <div class="offcanvas-body">
+                            <table border="0" width="95%" style="width:936px; height: 638px; margin-top: 41px;">
+                              <thead>
+                                <tr><th style="font-size: 40px; font-weight: 700; height:84px;">${title}</th></tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <div class="type_here">
+                                      <textarea id="freeform" name="freeform" style="width:616px; height: 638px; padding:3px;">Type here...</textarea>
+                                    </div>
+                                  </td>
+                                  <td class="youtubePlayer" style="width: 320px; height:638px;">
+                                    <center>
+                                      <!-- <iframe> and video player will replace this <div> tag. -->
+                                      <div id="videoDiv" style="vertical-align: text-top;"></div>
+                                      <br/>
+                                      <br/>
+                                      <br/>
+                                      <div id="next-button" style="vertical-align: bottom;"><a type="button" class="btn btn-primary"  href="./correction.html">Next</a></div>
+                                    </center>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>`;
+              
+            // offcanvasYoutubeVideo(i);
+            
+          }
+          document.getElementById("news_list").innerHTML = html;
+          // offcanvasYoutubeVideo(i);
+        }
+
+        function changePage(page){
+          log("page ==> " + page);
+
+          let currentPage = parseInt(document.querySelector("#paging .active a").innerText);
+          log("currentPage -->" + currentPage);
+
+          if(page === "first"){
+            page = "1";
+          }else if(page === "prev"){
+            page = (currentPage - 1) < 1 ? currentPage:
+            (currentPage - 1);
+          }else if(page === "next"){
+            page=(currentPage + 1) > totalPage ? totalPage : (currentPage + 1);
+          }else if(page === "last"){
+            page=totalPage;
+          }
+
+          if(currentPage != page){
+            setList(page);
+          }
+        }
+
+        function startDictation(){
+          const offcanvasElementList = document.querySelectorAll('.offcanvas')
+          const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap.Offcanvas(offcanvasEl))
+
+          
+        }
+
+        function offcanvasYoutubeVideo(i){
+          var tag = document.createElement('script');
+
+          tag.src = "https://www.youtube.com/iframe_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          var player;
+          onYouTubeIframeAPIReady(i);
+          onPlayerReady(event);
+
+          var done = false;
+          onPlayerStateChange(event);
+          stopVideo();
+        }
+
+        function onYouTubeIframeAPIReady(i) {
+          player = new YT.Player('videoDiv', {
+            height: string(news_list[i].snippet.thumbnails.medium.height),
+            width: string(news_list[i].snippet.thumbnails.medium.width),
+            videoId: string(news_list[i].snippet.resourceId.videoId),
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
+        }
+
+        function onPlayerReady(event) {
+          event.target.playVideo();
+        }
+
+        function onPlayerStateChange(event) {
+          if (event.data == YT.PlayerState.PLAYING && !done) {
+            setTimeout(stopVideo, 6000);
+            done = true;
+          }
+        }
+        function stopVideo() {
+          player.stopVideo();
+        }
+      }
+
+      // var tag = document.createElement('script');
+
+      // tag.src = "https://www.youtube.com/iframe_api";
+      // var firstScriptTag = document.getElementsByTagName('script')[0];
+      // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // // 3. This function creates an <iframe> (and YouTube player)
+      // //    after the API code downloads.
+      // var player;
+      // function onYouTubeIframeAPIReady() {
+      //   player = new YT.Player('videoDiv', {
+      //     height: string(news_list[i].snippet.thumbnails.medium.height),
+      //     width: string(news_list[i].snippet.thumbnails.medium.width),
+      //     videoId: string(news_list[i].snippet.resourceId.videoId),
+      //     events: {
+      //       'onReady': onPlayerReady,
+      //       'onStateChange': onPlayerStateChange
+      //     }
+      //   });
+      // }
+
+      // // 4. The API will call this function when the video player is ready.
+      // function onPlayerReady(event) {
+      //   event.target.playVideo();
+      // }
+
+      // // 5. The API calls this function when the player's state changes.
+      // //    The function indicates that when playing a video (state=1),
+      // //    the player should play for six seconds and then stop.
+      // var done = false;
+      // function onPlayerStateChange(event) {
+      //   if (event.data == YT.PlayerState.PLAYING && !done) {
+      //     setTimeout(stopVideo, 6000);
+      //     done = true;
+      //   }
+      // }
+      // function stopVideo() {
+      //   player.stopVideo();
+      // }
+    });
+    
+
+  </script>
+</body>
+</html>
