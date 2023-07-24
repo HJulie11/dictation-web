@@ -361,8 +361,8 @@
 
         function onYouTubeIframeAPIReady(i) {
           player = new YT.Player('videoDiv', {
-            height: string(news_list[i].snippet.thumbnails.medium.height),
-            width: string(news_list[i].snippet.thumbnails.medium.width),
+            height: '180',
+            width: '320',
             videoId: string(news_list[i].snippet.resourceId.videoId),
             events: {
               'onReady': onPlayerReady,

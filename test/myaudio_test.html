@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dictation" />
+  <meta name="keywords" content="듣고쓰기,영어,리스닝,쓰기,말하기,받아쓰기,dictation,english,listening,writing,listen,write,learn,speaking" />
+  <title>Dictation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="col-lg-12">
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">경청 Gyeong-cheong</a>
+        <div class="btn-group-inline justify-content-end" role="group" aria-label="Basic example">
+          <a type="button" class="btn btn-light" href="../account/signup.html">Sign Up</a>
+          <a type="button" class="btn btn-light" href="../account/login.html">Log In</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <section class="container-fluid col-lg-12">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class="fas fa-book-reader fa-2x mx-3"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item" id="homepage">
+              <a type="button" class="btn btn-light" aria-current="page" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item" id="mycalendar">
+              <a type="button" class="btn btn-light" aria-current="page" href="../calendar.html">My Calendar</a>
+            </li>
+            <li class="nav-item" id="news">
+              <a type="button" class="btn btn-light" aria-current="page" href="../audio/news.html">News</a>
+            </li>
+            <li class="nav-item" id="myaudio">
+              <a type="button" class="btn btn-light" aria-current="page" href="../audio/myaudio.html">My Audio</a>
+            </li>
+            <style type="text/css">
+              .nav-item > .btn:hover{
+                background-color: rgba(99, 96, 246, 1);
+                color: #fff;
+              }
+            </style>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!-- should be in a rectangular box-->
+  <!-- 모든 테스크 완료 후 로그아웃, 다음 로그인 때 그날의 테스크로 업데이트 (모든 체크박스 uncheck; 성적란 blank)-->
+  <body class="col-lg-12">
+    <section class="row">
+      <div class="container col-lg-3 col-lg-9 justify-content-center">
+        <div class="container p-3 col-lg-3" id="checklist">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Dictation
+            </label>
+          </div>
+          <br/>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">
+              Correction
+            </label>
+          </div>
+          <br/>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">
+              Read out loud
+            </label>
+          </div>
+          <br/>
+          <!-- score calculated presented after all the checkboxes checked (when user finish task and comeback to 'home' page)-->
+          <div class="container-fluid">Score</div> <!-- style.css에서 todolist 영역 구분(색깔)이 지정 되면 그 영역 내에서 'Score (계산된 점수)' 가운데 정렬-->
+          <style type="text/css">
+            br {
+              padding: 3px;
+            }
+
+            #checklist{
+              background-color:rgb(213, 213, 213);
+              border-radius: 5;
+              float:left;
+
+            }
+
+          </style>
+        </div>
+        <div class="p-3 col-lg-9" id="upload_list">
+          <div class="row p-3">
+            <a type="button" class="btn btn-primary" href="../audio/uploadform.html">🎧 Upload your own audio</a>
+          </div>
+          <div class="row">
+            <!-- <div class="table-wrap">
+              <div class="card my-4 mx-2" id="news_list">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Title</h5>
+                  <a href="../dictation/dictation.html" class="btn btn-primary">Go</a>
+                </div>
+              </div>
+            </div> -->
+            <table class="table" id="audio_list">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>  
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  
+
+  <footer class="footer">
+    <div class="footer__end footer__end--dark">
+      <div class="container">
+        <div class="footer__copyright u-padding-t-15">
+          <p class="u-font13">© 2023 Dictation master</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
