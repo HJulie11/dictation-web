@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+  <title> Majd's Music Player </title>
+</head>
+<body>
+  <input type="file" id="musicFile" accept="audio/*">
+  <button onclick="playMusic()">Play</button>
+  <audio id="musicPlayer" controls=""></audio>
+  <script>
+    function playMusic() {
+      var musicFile = document.getElementById("musicFile").files[0];
+      var musicPlayer = document.getElementById("musicPlayer");
+      musicPlayer.src = URL.createObjectURL(musicFile);
+      musicPlayer.play();
+    }
+  </script>
+</body>

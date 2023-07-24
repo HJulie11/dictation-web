@@ -148,7 +148,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="uploadFiles()">Submit</button>
+                    <input type="submit" class="btn btn-primary" onclick="uploadFiles()">Submit</input>
                   </div>
                 </div>
               </div>
@@ -241,7 +241,7 @@
       for(var i=0; i<files.length;i++){
         filenames+=files[i].name+"\n";
       }
-      alert("Selected files(): \n_____________________\n"+filenames;)
+      alert("Selected files(): \n_____________________\n"+filenames);
     }
 
     const fileInput = document.getElementById("file_upload");
@@ -251,16 +251,16 @@
       console.log(selectedFile);
     };
 
-    const handleFiles = (e) => [
-      const selectedFile =  [...fileInput.files];
-      const fileReader = new FileReader();
+    // const handleFiles = (e) => [
+    //   const selectedFile =  [...fileInput.files];
+    //   const fileReader = new FileReader();
 
-      fileReader.readAsDataURL(selectedFile[0]);
+    //   fileReader.readAsDataURL(selectedFile[0]);
 
-      fiileReader.onload = function () {
-        document.getElementById().src
-      }
-    ]
+    //   fiileReader.onload = function () {
+    //     document.getElementById().src
+    //   }
+    // ]
 
     fileInput.addEventListener("change", handleFiles);
   </script>
