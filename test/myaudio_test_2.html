@@ -104,7 +104,7 @@
             </div>
           </td>
           <td style="width: 667px; justify-content: center;">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#upload_audio" onclick="upload()">🎧 Upload your own audio</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#upload_audio">🎧 Upload your own audio</button>
             <div class="modal" id="upload_audio" tabindex="-1">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -165,7 +165,7 @@
                 background-color:rgb(76, 74, 184);
               }
             </style>
-            <table class="table" id="audio_list">
+            <table class="table">
               <thead>
                 <tr>
                   <th scope="col" style="width: 30px;">#</th>
@@ -173,8 +173,8 @@
                   <th scope="col"></th>
                 </tr>
               </thead>  
-              <tbody>
-                <tr class="audio_uploaded">
+              <tbody id="audio-list">
+                <tr>
                   <th scope="row">1</th>
                   <td>Title</td>
                   <td>
@@ -200,8 +200,8 @@
                               </td>
                               <td class="youtubePlayer" style="width: 320px; height:638px;">
                                 <center>
-                                  <!-- <iframe> and video player will replace this <div> tag. -->
-                                  <div id="videoDiv" style="vertical-align: text-top;"></div>
+                                  <audio src="audio/*" controls autoplay muted loop preload="metadata"></audio>
+                                  </div>
                                   <br/>
                                   <br/>
                                   <br/>
@@ -225,15 +225,25 @@
   
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript">
     
-    function upload(){
-      const myModal = new bootstrap.modal(document.getElementById('upload_audio'));
-      myModal.modal('show');
-    }
+    // function upload(){
+    //   const myModal = new bootstrap.Modal(document.getElementById('upload_audio'));
+    //   myModal.Modal('show');
+    // }
+
+    const fileInput = document.getElementById("file_upload");
+    const fileSaved = fileInput.files;
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+    });
 
     function uploadFiles() {
-      var files = document.getElementById('file_upload').files;
+      var files = fileInput.files; //get input (file)
+      var name = files.name;
+
       if(files.length==0){
         alert("Please first choose or drop any files(s)...");
         return;
@@ -243,13 +253,15 @@
         filenames+=files[i].name+"\n";
       }
       alert("Selected files(): \n_____________________\n"+filenames);
+
     }
 
-    const fileInput = document.getElementById("file_upload");
+    // const fileInput = document.getElementById("file_upload");
 
     fileInput.onchange=() => {
       const selectedFile = fileInput.files[0];
-      console.log(selectedFile);
+      fileSaved += selectedFile;
+      console.log(fileSaved);
     };
 
     // const handleFiles = (e) => [
@@ -263,7 +275,7 @@
     //   }
     // ]
 
-    fileInput.addEventListener("change", handleFiles);
+    // fileInput.addEventListener("change", handleFiles);
   </script>
 </body>
 </html>
