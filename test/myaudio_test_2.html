@@ -114,7 +114,9 @@
                   </div>
                   <div class="modal-body">
                     <div class="upload-container">
-                      <input type="file" id="file_upload" accept="audio/*"/> <!--multiple="true" 파일 여러개 업로드 가능-->
+                      <form action="UploadService" method="post" enctype="multipart/form-data">
+                        <input type="file" id="file_upload" accept="audio/*"/> <!--multiple="true" 파일 여러개 업로드 가능-->
+                      </form>
                     </div>
                     <style type="text/css">
                       .upload-container {
@@ -200,7 +202,7 @@
                               </td>
                               <td class="youtubePlayer" style="width: 320px; height:638px;">
                                 <center>
-                                  <audio src="audio/*" controls autoplay muted loop preload="metadata"></audio>
+                                  <audio id="audio_player" src="audio/*" controls autoplay muted loop preload="metadata"></audio>
                                   </div>
                                   <br/>
                                   <br/>
@@ -234,7 +236,7 @@
     // }
 
     const fileInput = document.getElementById("file_upload");
-    const fileSaved = fileInput.files;
+    //let fileSaved = fileInput.files;
 
     document.addEventListener("DOMContentLoaded", () => {
 
@@ -254,14 +256,23 @@
       }
       alert("Selected files(): \n_____________________\n"+filenames);
 
+      console.log(fileInput.files[0]);
+
     }
 
     // const fileInput = document.getElementById("file_upload");
 
-    fileInput.onchange=() => {
-      const selectedFile = fileInput.files[0];
-      fileSaved += selectedFile;
-      console.log(fileSaved);
+    // fileInput.onchange=() => {
+    //   const selectedFile = fileInput.files[0];
+    //   // fileSaved += selectedFile;
+    //   console.log(selectedFile);
+    // };
+
+    file_upload.onchange = () => {
+      var files = fileInput.files;
+      var file = URL.createObjectURL(files[0]); 
+      audio_player.src = file; 
+      audio_player.play();
     };
 
     // const handleFiles = (e) => [
