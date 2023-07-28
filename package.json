@@ -1,0 +1,25 @@
+{
+  "name": "gyeong-cheong",
+  "version": "1.0.0",
+  "description": "경청 개발 메인 파일",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HJulie11/dictation-web.git"
+  },
+  "author": "seojin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HJulie11/dictation-web/issues"
+  },
+  "homepage": "https://github.com/HJulie11/dictation-web#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
