@@ -1,7 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const app = express();
-const ejs = require("ejs");
+const ejs = require('ejs');
 
 //HTML,CSS 파일 보여주기
 app.set('view engine', 'ejs');

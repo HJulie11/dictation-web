@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/", function(req,res){
   //그림파일 전달
-  res.render('indextest')
+  res.render('indextest');
 })
 
 router.get("/about", function(req,res){
