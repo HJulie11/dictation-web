@@ -5,7 +5,7 @@ const ejs = require('ejs');
 
 //HTML,CSS 파일 보여주기
 app.set('view engine', 'ejs');
-app.set('view', './views');
+app.set('views', './views');
 app.use('/public', express.static(__dirname + '/public'));
 
 app.use(helmet());
