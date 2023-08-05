@@ -7,8 +7,8 @@ router.get("/", function(req,res){
   res.render('indextest', {title:"경청 Gyeong-cheong"});
 })
 
-router.get("/about", function(req,res){
-  res.send('About Page');
+router.get("/News", function(req,res){
+  res.send('news_test');
 }) 
 
 router.post("/postapi", function(req,res){
