@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const app = express();
 const ejs = require('ejs');
+const db = require('./model/db')
 
 //HTML,CSS 파일 보여주기
 app.set('view engine', 'ejs');
@@ -17,5 +18,6 @@ const mainRouter = require('./router/mainRouter');
 app.use('/', mainRouter);
 
 app.listen(3000, function(req,res){
+  db.sequelize.sync({force:false});
   console.log("서버가 실행되고 있다!");
 })
