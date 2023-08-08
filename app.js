@@ -16,6 +16,9 @@ app.use(express.urlencoded());
 
 const mainRouter = require('./router/mainRouter');
 app.use('/', mainRouter);
+app.use('/Calendar', mainRouter);
+app.use('/News', mainRouter);
+app.use('/MyAudio', mainRouter);
 
 app.listen(3000, function(req,res){
   db.sequelize.sync({force:false});

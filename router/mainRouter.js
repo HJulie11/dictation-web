@@ -8,8 +8,16 @@ router.get("/", function(req,res){
   res.render('indextest', {title:"경청 Gyeong-cheong"});
 })
 
+router.get("/Calendar", function(req,res){
+  res.render('calendar');
+}) 
+
 router.get("/News", function(req,res){
-  res.send('news_test');
+  res.render('news_test');
+}) 
+
+router.get("/MyAudio", function(req,res){
+  res.render('myaudio_test_2');
 }) 
 
 router.post("/postapi", function(req,res){
