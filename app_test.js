@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router();
 const helmet = require('helmet');
 const app = express();
 const ejs = require('ejs');
@@ -14,7 +15,8 @@ const expressErrorHandler = require('express-error-handler');
 
 const expressSession = require('express-session');
 
-const multer = require('multer')
+const multer = require('multer');
+const formidable = require('formidable');
 const fs = require('fs');
 
 const storage = multer.diskStorage({
@@ -27,12 +29,12 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({
-  storage: storage,
+  storage: storage
   // limits: {
   //   files: 10,
   //   fileSize: 1024 * 1024 * 1024
   // }
-})
+});
 
 const cors = require('cors');
 
@@ -42,7 +44,6 @@ const cors = require('cors');
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use('/public', express.static(__dirname + '/public'));
-app.use('/uploads', static(path.join(__dirname + '/uploads')));
 
 
 app.use(cookieParser());
@@ -60,10 +61,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 
-
-
-const router = express.Router();
-
 const uploadRouter = require('./router/uploadRouter');
 app.use('/process/audio', uploadRouter);
 
@@ -73,9 +70,35 @@ app.use('/Calendar', mainRouter);
 app.use('/News', mainRouter);
 app.use('/MyAudio', mainRouter);
 
-app.post("/upload", upload.single("audio"), (req,res) => {
-  res.send("Audio Uploaded")
-});
+// app.post("/upload", upload.array('audio', [,5]), function(req,res){
+//   var form = new formidable.IncomingForm();
+
+//   form.multiples = true;
+
+//   form.uploadDir = path.join(__dirname, '/uploads');
+//   form.on('file', function(field, file) {
+//     fs.rename(file.path, path.join(form.uploadDir, file.name));
+//   });
+
+//   form.on('error', function(err) {
+//     console.log('An error has occured: \n' + err);
+//   });
+
+//   form.on('end', function(){
+//     res.end('success');
+//   });
+
+//   form.parse(req);
+
+//   console.log(req.file);
+//   res.status(200).send("ok!");
+// });
+
+app.post('/upload', multer({dest:'/uploads'}).single('audio'),function(req,res){
+  console.log(req.body);
+  console.log(req.file);
+  res.status(204).end();
+})
 
 app.listen(3000, function(req,res){
   db.sequelize.sync({force:false});

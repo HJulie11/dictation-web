@@ -114,8 +114,8 @@
                   </div>
                   <div class="modal-body">
                     <div class="upload-container">
-                      <form action="UploadService" method="post" enctype="multipart/form-data">
-                        <input type="file" id="file_upload" accept="audio/*"/> <!--multiple="true" 파일 여러개 업로드 가능-->
+                      <form action="/upload" method="post" enctype="multipart/form-data">
+                        <input type="file" id="file_upload" name="audio" accept="audio/*"/> <!--multiple="true" 파일 여러개 업로드 가능-->
                       </form>
                     </div>
                     <style type="text/css">
@@ -150,7 +150,8 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" onclick="uploadFiles()" method="post" enctype="multipart/form-data" action="/process/audio">Submit</button>
+                    <!-- <button type="submit" class="btn btn-primary" onclick="uploadFiles()">Submit</button> -->
+                    <input type="submit" action="/upload"/>Submit
                   </div>
                 </div>
               </div>
