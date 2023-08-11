@@ -94,7 +94,7 @@ app.use('/MyAudio', mainRouter);
 //   res.status(200).send("ok!");
 // });
 
-app.post('/upload', multer({dest:'/uploads'}).single('audio'),function(req,res){
+app.post('/upload', multer({storage:'/uploads'}).single('audio'),function(req,res){
   console.log(req.body);
   console.log(req.file);
   res.status(204).end();
