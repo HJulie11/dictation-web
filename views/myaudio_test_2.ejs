@@ -233,7 +233,7 @@
   
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" ></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <!-- <script type="text/javascript" src="/views/js/bootstrap.js"></script> -->
   <script type="text/javascript">
     
     // function upload(){
@@ -245,6 +245,23 @@
     //let fileSaved = fileInput.files;
 
     document.addEventListener("DOMContentLoaded", () => {
+
+      var xhr = new XMLHttpRequest();
+
+      xhr.open('POST', '/upload', true)
+
+      xhr.setRequestHeader("Content-Type", "multipart/form-data");
+
+      // We create a FormData object and add the selected file
+      const formData = new FormData();
+      formData.append("audio", fileInput.files[0]);
+
+      // We send the request to the server with the send() method
+      xhr.send(formData);
+
+      xhr.onload=function(){
+        let audio_list = xhr.response.items;
+      }
 
     });
 
