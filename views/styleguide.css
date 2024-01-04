@@ -1,0 +1,8 @@
+:root {
+  --evenly-surrounding-shadow-grey: 0px 0px 6px 6px rgba(158, 158, 161, 0.5);
+  --variable-collection-stopped-at-dictation: initial;
+  --variable-collection-dictation-complete: initial;
+  --variable-collection-stopped-at-correction: initial;
+  --variable-collection-correction-complete: initial;
+  --variable-collection-stopped-at-reading: initial;
+}

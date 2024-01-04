@@ -1,0 +1,101 @@
+.box {
+  position: relative;
+  width: 1133px;
+  height: 545px;
+}
+
+.box .not-started-audio {
+  position: fixed;
+  width: 1133px;
+  height: 545px;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px dashed;
+  border-color: #9747ff;
+}
+
+.box .overlap-wrapper {
+  position: absolute;
+  width: 1093px;
+  height: 181px;
+  top: 20px;
+  left: 20px;
+}
+
+.box .overlap {
+  position: relative;
+  height: 181px;
+}
+
+.box .frame {
+  display: flex;
+  flex-direction: column;
+  width: 1093px;
+  height: 181px;
+  align-items: flex-start;
+  gap: 29px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.box .overlap-group-wrapper {
+  position: relative;
+  width: 1092px;
+  height: 181px;
+}
+
+.box .overlap-group {
+  position: relative;
+  width: 1093px;
+  height: 181px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 0.5px solid;
+  border-color: #4c4b4b;
+}
+
+.box .text-wrapper {
+  position: absolute;
+  width: 253px;
+  top: 26px;
+  left: 30px;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  line-height: normal;
+}
+
+.box .div {
+  position: absolute;
+  top: 118px;
+  left: 30px;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  color: #a0a0a0;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  line-height: normal;
+}
+
+.box .status-bar-hover {
+  position: absolute;
+  width: 1042px;
+  height: 20px;
+  top: 90px;
+  left: 25px;
+  object-fit: cover;
+}
+
+.box .div-wrapper {
+  position: absolute;
+  width: 1093px;
+  height: 181px;
+  top: 305px;
+  left: 20px;
+  box-shadow: var(--evenly-surrounding-shadow-grey);
+}

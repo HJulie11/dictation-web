@@ -1,0 +1,455 @@
+.my-audio {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.my-audio .div {
+  background-color: #ffffff;
+  width: 1440px;
+  height: 1024px;
+  position: relative;
+}
+
+.my-audio .overlap {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  top: 363px;
+  left: 184px;
+  background-color: #797878;
+  border-radius: 23px;
+}
+
+.my-audio .group {
+  position: relative;
+  width: 23px;
+  height: 22px;
+  top: 12px;
+  left: 11px;
+}
+
+.my-audio .overlap-group {
+  position: relative;
+  height: 22px;
+}
+
+.my-audio .ellipse {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 0;
+  left: 0;
+  border-radius: 9px;
+  border: 3px solid;
+  border-color: #ffffff;
+}
+
+.my-audio .line {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 14px;
+  left: 15px;
+}
+
+.my-audio .frame {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  top: 31px;
+  left: 1200px;
+  background-color: #e1e1e1;
+  border-radius: 50px;
+}
+
+.my-audio .ellipse-2 {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  top: 9px;
+  left: 13px;
+  background-color: #737373;
+  border-radius: 5.5px;
+}
+
+.my-audio .img {
+  position: absolute;
+  width: 23px;
+  height: 15px;
+  top: 21px;
+  left: 6px;
+}
+
+.my-audio .overlap-2 {
+  position: absolute;
+  width: 1093px;
+  height: 136px;
+  top: 188px;
+  left: 174px;
+  background-color: #d9d8ff;
+  border-radius: 10px;
+  border: 3px dashed;
+  border-color: #625ff6;
+}
+
+.my-audio .text-wrapper {
+  position: absolute;
+  top: 67px;
+  left: 387px;
+  font-family: "Avenir-Roman", Helvetica;
+  font-weight: 400;
+  color: #333333;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  line-height: normal;
+}
+
+.my-audio .drag-and-drop {
+  position: absolute;
+  width: 52px;
+  height: 50px;
+  top: 18px;
+  left: 518px;
+}
+
+.my-audio .div-wrapper {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  top: -3px;
+  left: -3px;
+  border: 3px dashed;
+  border-color: #625ff6;
+}
+
+.my-audio .text-wrapper-2 {
+  width: 16px;
+  top: -5px;
+  left: 4px;
+  color: #625ff6;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  position: absolute;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.my-audio .line-2 {
+  position: absolute;
+  width: 14px;
+  height: 1px;
+  top: 18px;
+  left: 36px;
+}
+
+.my-audio .line-3 {
+  position: absolute;
+  width: 33px;
+  height: 1px;
+  top: 50px;
+  left: 17px;
+}
+
+.my-audio .line-4 {
+  position: absolute;
+  width: 1px;
+  height: 14px;
+  top: 36px;
+  left: 18px;
+}
+
+.my-audio .line-5 {
+  position: absolute;
+  width: 1px;
+  height: 33px;
+  top: 17px;
+  left: 50px;
+}
+
+.my-audio .not-started-audio {
+  top: 421px;
+  left: 175px;
+  position: absolute;
+  width: 1093px;
+  height: 181px;
+}
+
+.my-audio .overlap-3 {
+  position: relative;
+  height: 181px;
+}
+
+.my-audio .frame-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 1093px;
+  height: 181px;
+  align-items: flex-start;
+  gap: 29px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.my-audio .overlap-group-wrapper {
+  position: relative;
+  width: 1092px;
+  height: 181px;
+}
+
+.my-audio .overlap-group-2 {
+  position: relative;
+  width: 1093px;
+  height: 181px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 0.5px solid;
+  border-color: #4c4b4b;
+}
+
+.my-audio .text-wrapper-3 {
+  position: absolute;
+  width: 253px;
+  top: 26px;
+  left: 30px;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  line-height: normal;
+}
+
+.my-audio .text-wrapper-4 {
+  top: 118px;
+  left: 30px;
+  color: #a0a0a0;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  position: absolute;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.my-audio .status-bar-hover {
+  position: absolute;
+  width: 1032px;
+  height: 1px;
+  top: 90px;
+  left: 30px;
+  object-fit: cover;
+}
+
+.my-audio .overlap-wrapper {
+  top: 623px;
+  left: 175px;
+  position: absolute;
+  width: 1093px;
+  height: 181px;
+}
+
+.my-audio .text-wrapper-5 {
+  position: absolute;
+  width: 312px;
+  top: 26px;
+  left: 30px;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  line-height: normal;
+}
+
+.my-audio .text-wrapper-6 {
+  top: 112px;
+  left: 620px;
+  color: #4e4aeb;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  position: absolute;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.my-audio .not-started-audio-2 {
+  top: 825px;
+  left: 174px;
+  position: absolute;
+  width: 1093px;
+  height: 181px;
+}
+
+.my-audio .text-wrapper-7 {
+  top: 112px;
+  left: 1026px;
+  color: #106e19;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  position: absolute;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.my-audio .ellipse-3 {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  top: 27px;
+  left: 24px;
+  background-color: #2621f6;
+  border-radius: 23px;
+}
+
+.my-audio .ellipse-4 {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  top: 27px;
+  left: 1370px;
+  background-color: #2621f6;
+  border-radius: 23px;
+}
+
+.my-audio .gyeong-cheong-logo {
+  position: absolute;
+  width: 306px;
+  height: 88px;
+  top: 23px;
+  left: 102px;
+}
+
+.my-audio .overlap-4 {
+  position: relative;
+  height: 71px;
+}
+
+.my-audio .logo {
+  position: absolute;
+  width: 306px;
+  height: 55px;
+  top: 0;
+  left: 0;
+}
+
+.my-audio .text-wrapper-8 {
+  width: 306px;
+  top: -1px;
+  left: 0;
+  color: #2621f6;
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: 0.8px;
+  position: absolute;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.my-audio .slogan {
+  position: absolute;
+  width: 151px;
+  height: 27px;
+  top: 44px;
+  left: 78px;
+}
+
+.my-audio .text-wrapper-9 {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  color: #7b7b7b;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0.4px;
+  line-height: normal;
+}
+
+.my-audio .menu-calendar {
+  width: 105px;
+  left: 572px;
+  position: absolute;
+  height: 34px;
+  top: 41px;
+}
+
+.my-audio .text-wrapper-10 {
+  top: -1px;
+  left: 17px;
+  color: #333333;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  position: absolute;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.my-audio .menu-my-audio {
+  position: absolute;
+  width: 125px;
+  height: 34px;
+  top: 41px;
+  left: 781px;
+}
+
+.my-audio .text-wrapper-11 {
+  top: -1px;
+  left: 0;
+  color: #333333;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  position: absolute;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.my-audio .menu-news {
+  width: 65px;
+  left: 1000px;
+  position: absolute;
+  height: 34px;
+  top: 41px;
+}
+
+.my-audio .text-wrapper-12 {
+  top: -1px;
+  left: 9px;
+  color: #333333;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  position: absolute;
+  font-family: "Avenir-Heavy", Helvetica;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.my-audio .account-button {
+  position: absolute;
+  width: 102px;
+  height: 34px;
+  top: 34px;
+  left: 1245px;
+}
+
+.my-audio .text-wrapper-13 {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  font-family: "Avenir-Roman", Helvetica;
+  font-weight: 400;
+  color: #333333;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  line-height: normal;
+}
