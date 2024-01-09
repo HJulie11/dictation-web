@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Dictation" />
   <meta name="keywords" content="듣고쓰기,영어,리스닝,쓰기,말하기,받아쓰기,dictation,english,listening,writing,listen,write,learn,speaking" />
-  <title>Dictation</title>
+  <title>드러쓰닝</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script> -->
-  <script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <!-- <script>
     $(document).ready(function(){
       console.log("시작!")
 
@@ -17,100 +17,250 @@
         url:""
       })
     })
-  </script>
-  <link rel="stylesheet" href="/public/index.css" />
+  </script> -->
+  <link rel="stylesheet" href="../public/index.css" />
+  <link rel="stylesheet" href="globals.css" />
+  <link rel="stylesheet" href="styleguide.css" />
 </head>
 <body>
-  <header class="header header--style one">
-    <div class="header__status color-gray has-border">
-      <div class="container">
-        <div class="row">
-          <div class="col-8 col-sm-6">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#"><i class="fas fa-book-reader fa-2x mx-3"><%= locals.title %></i></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+  
+  <div class="home">
+    <header class="header header--style one">
+      <div class="header__status color-gray has-border">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 col-sm-6">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                  <i class="fas fa-book-reader fa-2x mx-3">
+                    <svg width="306" height="112" viewBox="0 0 306 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M83.7263 65.6H109.766V69.84H83.7263V65.6ZM79.8463 76.76H113.366V81.12H79.8463V76.76ZM83.7263 51.56H109.486V55.88H89.0063V67.36H83.7263V51.56ZM143.083 48.48H148.403V85.64H143.083V48.48ZM137.283 61.84H144.163V66.12H137.283V61.84ZM118.683 72.68H121.723C127.723 72.68 132.483 72.56 137.843 71.64L138.323 75.96C132.843 76.88 127.883 77.08 121.723 77.08H118.683V72.68ZM118.603 51.64H135.283V65.56H123.963V74H118.683V61.36H130.043V55.88H118.603V51.64ZM161.72 51.16H165.76V55.36C165.76 61.72 163.44 67.88 157.52 70.44L154.8 66.52C159.8 64.32 161.72 59.68 161.72 55.36V51.16ZM163 51.16H167.04V55.36C167.04 59.6 168.84 64.44 174 66.76L171.72 71C165.24 68.32 163 61.64 163 55.36V51.16ZM176.44 51.16H180.44V55.36C180.44 61.72 178.2 68.36 171.72 71L169.48 66.76C174.6 64.48 176.44 59.68 176.44 55.36V51.16ZM177.76 51.16H181.8V55.36C181.8 59.84 183.68 64.36 188.72 66.52L185.96 70.44C180.04 67.92 177.76 61.88 177.76 55.36V51.16ZM155 76.68H188.52V81H155V76.68ZM217.957 48.52H223.277V69.96H217.957V48.52ZM194.717 50.84H199.997V66.16H194.717V50.84ZM194.717 63.56H197.917C203.557 63.56 209.197 63.2 215.077 62L215.677 66.28C209.597 67.56 203.757 67.92 197.917 67.92H194.717V63.56ZM210.757 70.48C218.517 70.48 223.437 73.32 223.437 78.04C223.437 82.76 218.517 85.56 210.757 85.56C202.997 85.56 198.077 82.76 198.077 78.04C198.077 73.32 202.997 70.48 210.757 70.48ZM210.757 74.72C205.957 74.72 203.397 75.76 203.397 78.04C203.397 80.28 205.957 81.36 210.757 81.36C215.557 81.36 218.117 80.28 218.117 78.04C218.117 75.76 215.557 74.72 210.757 74.72Z" fill="#2622F7"/>
+                      <g clip-path="url(#clip0_524_495)">
+                        <rect x="41" y="26" width="60" height="60" rx="30" fill="#2622F7"/>
+                        <path d="M81.6391 63.4696H107.679V67.7096H81.6391V63.4696ZM77.7591 74.6296H111.279V78.9896H77.7591V74.6296ZM81.6391 49.4296H107.399V53.7496H86.9191V65.2296H81.6391V49.4296ZM140.996 46.3496H146.316V83.5096H140.996V46.3496ZM135.196 59.7096H142.076V63.9896H135.196V59.7096ZM116.596 70.5496H119.636C125.636 70.5496 130.396 70.4296 135.756 69.5096L136.236 73.8296C130.756 74.7496 125.796 74.9496 119.636 74.9496H116.596V70.5496ZM116.516 49.5096H133.196V63.4296H121.876V71.8696H116.596V59.2296H127.956V53.7496H116.516V49.5096ZM159.633 49.0296H163.673V53.2296C163.673 59.5896 161.353 65.7496 155.433 68.3096L152.713 64.3896C157.713 62.1896 159.633 57.5496 159.633 53.2296V49.0296ZM160.913 49.0296H164.953V53.2296C164.953 57.4696 166.753 62.3096 171.913 64.6296L169.633 68.8696C163.153 66.1896 160.913 59.5096 160.913 53.2296V49.0296ZM174.353 49.0296H178.353V53.2296C178.353 59.5896 176.113 66.2296 169.633 68.8696L167.393 64.6296C172.513 62.3496 174.353 57.5496 174.353 53.2296V49.0296ZM175.673 49.0296H179.713V53.2296C179.713 57.7096 181.593 62.2296 186.633 64.3896L183.873 68.3096C177.953 65.7896 175.673 59.7496 175.673 53.2296V49.0296ZM152.913 74.5496H186.433V78.8696H152.913V74.5496ZM215.87 46.3896H221.19V67.8296H215.87V46.3896ZM192.63 48.7096H197.91V64.0296H192.63V48.7096ZM192.63 61.4296H195.83C201.47 61.4296 207.11 61.0696 212.99 59.8696L213.59 64.1496C207.51 65.4296 201.67 65.7896 195.83 65.7896H192.63V61.4296ZM208.67 68.3496C216.43 68.3496 221.35 71.1896 221.35 75.9096C221.35 80.6296 216.43 83.4296 208.67 83.4296C200.91 83.4296 195.99 80.6296 195.99 75.9096C195.99 71.1896 200.91 68.3496 208.67 68.3496ZM208.67 72.5896C203.87 72.5896 201.31 73.6296 201.31 75.9096C201.31 78.1496 203.87 79.2296 208.67 79.2296C213.47 79.2296 216.03 78.1496 216.03 75.9096C216.03 73.6296 213.47 72.5896 208.67 72.5896Z" fill="white"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_524_495">
+                          <rect x="41" y="26" width="60" height="60" rx="30" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg> 
+                  </i>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              </div>
             </div>
+            <div class="col-6 col-sm-6">
+              <div class="container-fluid p-0" style="margin: top 40px;">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                  <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><i class="fas fa-book-reader fa-2x mx-3"></i></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="/Calendar" method="GET" style="font-family:'Avenir-Heavy', Helvetica; font-weight: 400; font-size: 20px;">캘린더</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="/News" method="GET" style="font-family:'Avenir-Heavy', Helvetica; font-weight: 400; font-size: 20px;">나의 오디오</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="/MyAudio" method="GET" style="font-family:'Avenir-Heavy', Helvetica; font-weight: 400; font-size: 20px;">뉴스</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="/MyAudio" method="GET" style="font-family:'Avenir-Heavy', Helvetica; font-weight: 400; font-size: 20px;">로그인</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
+            <!-- <div class="col-3 col-sm-3">
+              <ul class="header__status__items header__status__items--right">
+                <li id="login_btn" class="header__status__login cursor-pointer" data-toggle="modal" data-target="#usermodal" onclick="loadFBSdk()">
+                  <i class="fa fa-lock" aria-hidden="true">
+                    <div class="log-in-button"><div class="text-wrapper-6">로그인</div></div>
+                  </i>
+                </li>
+              </ul>
+            </div> -->
           </div>
+        </div>
+      </div>
+    </header>
+    
+    <div>
+        <div class="BBC-news">BBC<br />News</div>
+        <div class="text-wrapper">How does it work?</div>
+        <div class="text-wrapper-2">Frequently Asked Questions</div>
+        <div class="text-wrapper-3">안내 게시판</div>
+        <div class="CNN-news">CNN<br />News</div>
+        <div class="CNN-news-2">
+            <div class="news-card-orig"></div>
+            <div class="news-card-org"></div>
+            <div class="news-card-org-2"></div>
+            <div class="news-card-org-3"></div>
+            <img class="go-to-button" src="img/image.png" />
+            <div class="text-wrapper-4">All News</div>
+        </div>
+        <div class="BBC-news-2">
+            <div class="news-card-orig-2"></div>
+            <div class="news-card-org-4"></div>
+            <div class="news-card-org-5"></div>
+            <div class="news-card-org-6"></div>
+            <img class="go-to-button" src="img/go-to-button.png" />
+            <div class="text-wrapper-4">All News</div>
+        </div>
+        
 
-          <div class="col-3 col-sm-6">
-            <ul class="header__status__items header__status__items--right">
-              <li class="header_status__social d-none d-xl-block d-lg-block">
-                <a href="./account/signup.html">Sign Up</a>
-              </li>
-              <li id="login_btn" class="header__status__login cursor-pointer" data-toggle="modal" data-target="#usermodal" onclick="loadFBSdk()">
-                <i class="fa fa-lock" aria-hidden="true"></i>Login
-              </li>
-            </ul>
-          </div>
+        
+        <div class="overlap">
+            <div class="rectangle"></div>
+            <div class="text-wrapper-9">DICTATION</div>
+            <div class="group">
+                <div class="rectangle-2"></div>
+                <img class="polygon" src="img/polygon-1.svg" />
+            </div>
         </div>
-      </div>
+        <div class="overlap-group"><div class="text-wrapper-10">CORRECTION</div></div>
+        <div class="overlap-2"><div class="text-wrapper-11">READ OUT LOUD</div></div>
+        <img class="reading" src="img/reading-1.png" />
+        <img class="correction" src="img/correction.png" />
+        <img class="dictation" src="img/dictation.png" />
+        <div class="FAQ-table">
+            <div class="frame">
+                <div class="overlap-wrapper">
+                    <div class="overlap-4">
+                        <div class="FAQ-item-hover">
+                            <div class="frame-2">
+                                <div class="overlap-group-3">
+                                    <div class="how-does-it-work">Dictation이 뭔가요?</div>
+                                    <div class="rectangle-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frame-wrapper">
+                            <div class="frame-2">
+                                <div class="overlap-group-3">
+                                    <div class="how-does-it-work">어떻게 학습하나요?</div>
+                                    <div class="rectangle-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="FAQ-item-hover-2">
+                            <div class="frame-2">
+                                <div class="overlap-group-3">
+                                    <div class="how-does-it-work">이 학습법의 효과는 뭔가요?</div>
+                                    <div class="rectangle-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="FAQ-item-hover-3">
+                            <div class="frame-2">
+                                <div class="overlap-group-3">
+                                    <p class="p">음원이 아닌 비디오를 업로드할 수 있나요?</p>
+                                    <div class="rectangle-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="FAQ-item-hover-4">
+                            <div class="frame-2">
+                                <div class="overlap-group-3">
+                                    <p class="how-does-it-work">모든 자료를 무료로 사용할 수 있나요?</p>
+                                    <div class="rectangle-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="FAQ-item-hover-5">
+                            <div class="frame-2">
+                                <div class="overlap-group-3">
+                                    <div class="how-does-it-work">모바일 기기에서 사용이 가능한가요?</div>
+                                    <div class="rectangle-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table">
+            <div class="container">
+                <div class="element-12">
+                    <div class="frame-wrapper-2">
+                        <div class="frame-3"><div class="text-wrapper-15">게시 내용</div></div>
+                    </div>
+                </div>
+                <div class="element-12">
+                    <div class="frame-wrapper-3">
+                        <div class="frame-3"><div class="text-wrapper-15">게시 내용</div></div>
+                    </div>
+                </div>
+                <div class="element-12">
+                    <div class="frame-wrapper-2">
+                        <div class="frame-3"><div class="text-wrapper-15">게시 내용</div></div>
+                    </div>
+                </div>
+                <div class="element-12">
+                    <div class="frame-wrapper-3">
+                        <div class="frame-3"><div class="text-wrapper-15">게시 내용</div></div>
+                    </div>
+                </div>
+                <div class="element-12">
+                    <div class="frame-wrapper-2">
+                        <div class="frame-3"><div class="text-wrapper-15">게시 내용</div></div>
+                    </div>
+                </div>
+                <div class="element-12">
+                    <div class="frame-wrapper-3">
+                        <div class="frame-3"><div class="text-wrapper-15">게시 내용</div></div>
+                    </div>
+                </div>
+                <div class="element-12">
+                    <div class="frame-wrapper-2">
+                        <div class="frame-3"><div class="text-wrapper-15">게시 내용</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
-  <div class="container-fluid p-0">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="fas fa-book-reader fa-2x mx-3"></i></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/" method="GET">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/Calendar" method="GET">My Calendar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/News" method="GET">News</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/MyAudio" method="GET">My Audio</a>
-            </li>
-          </ul>
-        </div>
+
+    <footer class="footer">
+      <div class="sub-footer">
+          <div class="sub-footer-container">
+              <div class="element"><div class="text-wrapper-8">목록</div></div>
+              <div class="div-wrapper"><div class="text-wrapper-8">목록</div></div>
+              <div class="element-2"><div class="text-wrapper-8">목록</div></div>
+              <div class="element-3"><div class="text-wrapper-8">목록</div></div>
+              <div class="element-4"><div class="text-wrapper-8">목록</div></div>
+              <div class="element-5"><div class="text-wrapper-8">목록</div></div>
+              <div class="element-6"><div class="text-wrapper-8">목록</div></div>
+              <div class="element-7"><div class="text-wrapper-8">목록</div></div>
+              <div class="element-8"><div class="text-wrapper-8">목록</div></div>
+          </div>
       </div>
-    </nav>
+      <div class="footer-container">
+          <div class="element"><div class="text-wrapper-8">목록</div></div>
+          <div class="div-wrapper"><div class="text-wrapper-8">목록</div></div>
+          <div class="element-2"><div class="text-wrapper-8">목록</div></div>
+          <div class="element-9"><div class="text-wrapper-8">목록</div></div>
+          <div class="element-3"><div class="text-wrapper-8">목록</div></div>
+          <div class="element-4"><div class="text-wrapper-8">목록</div></div>
+          <div class="element-5"><div class="text-wrapper-8">목록</div></div>
+          <div class="element-10"><div class="text-wrapper-8">목록</div></div>
+          <div class="element-6"><div class="text-wrapper-8">목록</div></div>
+          <div class="element-7"><div class="text-wrapper-8">목록</div></div>
+          <div class="element-8"><div class="text-wrapper-8">목록</div></div>
+          <div class="element-11"><div class="text-wrapper-8">목록</div></div>
+      </div>
+    </footer>
   </div>
 
-  <!-- should be in a rectangular box-->
-  <!-- 모든 테스크 완료 후 로그아웃, 다음 로그인 때 그날의 테스크로 업데이트 (모든 체크박스 uncheck; 성적란 blank)-->
-  <div class="container-fluid p-0">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Dictation
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-      <label class="form-check-label" for="flexCheckChecked">
-        Correction
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-      <label class="form-check-label" for="flexCheckChecked">
-        Read out loud
-      </label>
-    </div>
-    <!-- score calculated presented after all the checkboxes checked (when user finish task and comeback to 'home' page)-->
-    <div class="container-fluid">Score</div> <!-- style.css에서 todolist 영역 구분(색깔)이 지정 되면 그 영역 내에서 'Score (계산된 점수)' 가운데 정렬-->
-  </div>
-
-  <footer class="footer">
-    <div class="footer__end footer__end--dark">
-      <div class="container">
-        <div class="footer__copyright u-padding-t-15">
-          <p class="u-font13">© 2023 Dictation master</p>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </html>
